@@ -1,5 +1,7 @@
 import { useState } from "react";
 import "./App.css";
+import ScoreBoard from "./Component/Scoreboard";
+import Buttons from "./Component/Buttons";
 
 function App() {
   const [balls, setBalls] = useState(0);
@@ -23,25 +25,13 @@ function App() {
 
   return (
     <div className="container">
-      <div className="scoreboard">
-        <h1>Cricket Score Board</h1>
+      <ScoreBoard balls={balls} runs={runs} />
 
-        <h2>Balls : {balls}</h2>
-
-        <h2>Runs : {runs}</h2>
-      </div>
-
-      <p className="text">
-        You get total of 6 balls (1 over). The button gets disabled after that
-      </p>
-
-      <div className="buttons">
-        <button onClick={hitBall} disabled={balls === 6}>
-          Click to hit the ball
-        </button>
-
-        <button onClick={resetGame}>Reset Game</button>
-      </div>
+      <Buttons
+        balls={balls}
+        hitBall={hitBall}
+        resetGame={resetGame}
+      />
     </div>
   );
 }
